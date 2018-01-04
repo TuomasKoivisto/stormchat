@@ -1,0 +1,528 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: url('../images/tausta.jpg') no-repeat center center fixed;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  margin: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#container {
+  height: 90%;
+  width: 90%;
+  margin: auto;
+}
+
+#contentBox {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid #383838;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 25px 10px rgba(156, 156, 156, 1);
+  -moz-box-shadow: 0px 0px 25px 10px rgba(156, 156, 156, 1);
+  box-shadow: 0px 0px 25px 10px rgba(20, 20, 20, 0.7);
+  overflow: hidden;
+  padding: 10px;
+  margin: auto;
+  margin-top: 3%;
+}
+
+.row div {
+  -webkit-transition: width 0.5s ease, margin 0.3s ease;
+  -moz-transition: width 0.5s ease, margin 0.3s ease;
+  -o-transition: width 0.5s ease, margin 0.3s ease;
+  transition: width 0.5s ease, margin 0.3s ease;
+}
+
+#leftContent {
+  border-right: 4px groove #666666;
+  height: 100%;
+  -moz-border-right: thick groove #666666;
+  border-radius: 2px;
+  color: rgb(232, 232, 232);
+}
+
+#messagelist {
+  padding-left: 5px;
+}
+
+#messagelist > li {
+  list-style-type: none;
+  font-size: 12px;
+}
+
+#rightContent {
+  height: 100%;
+}
+
+#leftArrow {
+  font-size: 1.8em;
+  float: right;
+  margin: auto;
+  color: #666666;
+}
+
+#leftArrow:hover {
+  color: #999999;
+}
+
+#rightArrow {
+  font-size: 1.8em;
+  color: #666666;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#rightArrow:hover {
+  color: #999999;
+}
+
+#sendMessage {
+  bottom: 20px;
+  position: absolute;
+  margin-right: 20px;
+}
+
+#sendBtn {
+  background-color: rgb(72, 105, 175);
+}
+
+#sendBtn:hover {
+  background-color: rgb(92, 125, 195);
+}
+
+#textArea {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgb(80, 80, 80);
+  width: 100%;
+  margin: auto;
+  color: white;
+}
+
+#modal {
+  text-align: center;
+  position: fixed;
+  background: url(../images/tausta.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  height: 450px;
+  max-height: 100%;
+  will-change: transform;
+  overflow: auto;
+}
+
+.modal-body,
+.modal-header,
+.modal-footer {
+  border: none !important;
+}
+
+#modal-title {
+  font-family: Bookman, serif;
+  font-size: 30px;
+  color: rgb(220, 232, 255);
+  letter-spacing: 3px;
+}
+
+#main-menu {
+  min-width: 200px;
+}
+
+#createRoom {
+  background-color: rgb(120, 142, 197);
+  margin-bottom: 5px;
+  border: 1px solid rgb(68, 100, 168);
+  font-size: 16px;
+  color: rgb(220, 232, 255);
+}
+
+#comment-glyphicon {
+  margin-right: 3px;
+}
+
+#login-glyphicon {
+  margin-left: 3px;
+}
+
+#EnterRoom {
+  background-color: rgb(72, 105, 175);
+  border: 1px solid rgb(68, 100, 168);
+  font-size: 16px;
+  color: rgb(220, 232, 255);
+}
+
+#createRoom:hover {
+  text-decoration: none;
+  animation: flash 0.2s ease-out;
+}
+
+#EnterRoom:hover {
+  text-decoration: none;
+  animation: flash2 0.2s ease-out;
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgb(240, 240, 240);
+  }
+  25% {
+    background-color: rgb(210, 217, 235);
+  }
+  100% {
+    background-color: rgb(120, 142, 197);
+  }
+}
+
+@keyframes flash2 {
+  0% {
+    background-color: rgb(240, 240, 240);
+  }
+  25% {
+    background-color: rgb(210, 217, 235);
+  }
+  100% {
+    background-color: rgb(72, 105, 175);
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
+
+.arrow {
+  color: rgb(160, 160, 160) !important;
+  font-size: 24px !important;
+}
+
+.arrow:hover {
+  color: rgb(200, 200, 200) !important;
+}
+/* input kentät */
+#roomName,
+#username,
+#roomPassword,
+#roomPasswordAgain,
+#roomSearch,
+#passwordRequired {
+  padding: 4px;
+  font-size: 16px;
+  width: 300px;
+  background-color: rgb(213, 220, 237);
+  max-width: 90%;
+  border: none;
+  color: rgb(39, 53, 88);
+}
+
+#CreateRoom-button,
+#choosename-button {
+  background-color: rgb(120, 142, 197);
+  color: rgb(220, 232, 255);
+  border: 1px solid rgb(68, 100, 168);
+  display: block;
+  margin: auto;
+  width: 150px;
+  max-width: 80%;
+  font-size: 16px;
+}
+
+#choosename-button {
+  margin-top: 15px;
+}
+
+#CreateRoom-button:hover {
+  text-decoration: none;
+  animation: flash 0.2s ease-out;
+}
+#backToListing {
+  background-color: rgb(90, 105, 175);
+  margin-top: 10px;
+}
+
+#chooseRoom-button,
+#backToListing {
+  background-color: rgb(72, 105, 175);
+  color: rgb(220, 232, 255);
+  border: 1px solid rgb(68, 100, 168);
+  display: block;
+  margin: 20px auto;
+  width: 155px;
+  max-width: 80%;
+  font-size: 16px;
+  height: 35px;
+}
+#backToListing {
+  background-color: rgb(90, 105, 175);
+}
+
+.chooseRoom-hover:hover {
+  text-decoration: none;
+  animation: flash 0.2s ease-out;
+}
+
+.choosename-hover:hover {
+  text-decoration: none;
+  animation: flash 0.2s ease-out;
+}
+
+.menu {
+  display: inline-block;
+  font-size: 1.8em;
+  float: left;
+  color: #666666;
+  width: 1.5em;
+  margin-right: 7px;
+}
+
+.menu:hover {
+  color: #999999;
+}
+
+.pressed {
+  color: rgb(170, 170, 170);
+}
+
+#dropMenu {
+  border-top: solid #666666;
+  border-bottom: solid #666666;
+  border-radius: 5px;
+  display: none;
+  position: relative;
+  width: 94.5%;
+  height: 30%;
+  background-color: rgba(30, 30, 30, 0, 9);
+  margin-top: 5px;
+}
+
+#feedback {
+  margin-top: 20px;
+}
+
+#feedback p {
+  margin-top: 10px;
+  color: white;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+#feedback strong {
+  margin-top: 10px;
+  color: white;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  font-weight: normal;
+}
+
+#roomCreatedMessage {
+  color: lightgreen !important;
+  font-size: 18px !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+#roomCreatedMessage strong {
+  color: white;
+  font-size: 20px !important;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+#enter-now-button {
+  background-color: rgb(120, 142, 197);
+  color: rgb(220, 232, 255);
+  border: 1px solid rgb(68, 100, 168);
+  display: inline-block;
+  max-width: 80%;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#dismiss-glyphicon {
+  font-size: 20px;
+  color: white;
+  margin-right: 15px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-top: 10px;
+}
+
+.menu .tooltiptext {
+  visibility: hidden;
+  width: 50px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 2px 0;
+  font-size: 12px;
+  /* Position the tooltip */
+  position: absolute;
+  bottom: 20px;
+  right: 5px;
+  z-index: 1;
+}
+
+.menu:hover .tooltiptext {
+  visibility: visible;
+}
+
+.users-pressed {
+  color: rgb(0, 120, 0) !important;
+}
+
+#users-amount {
+  color: rgb(230, 230, 230);
+  font-size: 18px;
+}
+
+#chat-area {
+  height: 75%;
+  width: 100%;
+  border: 2px solid rgb(80, 80, 80);
+  margin-top: 35px;
+}
+
+#working-area {
+  height: 90%;
+  width: 100%;
+  border: 2px solid rgb(80, 80, 80);
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  font-size: 12px;
+  color: white;
+  resize: none;
+}
+
+p {
+  font-size: 12px;
+}
+
+.scrollable {
+  overflow: auto;
+}
+
+#createdRooms {
+  list-style-type: none;
+  margin: auto;
+}
+
+.listedRoom {
+  color: rgb(220, 232, 255);
+  width: 300px;
+  max-width: 90%;
+  font-size: 18px;
+  font-family: Bookman, serif;
+  margin: 15px 0;
+  border: 1px solid rgba(120, 142, 197, 0);
+}
+
+.listedRoom-hover:hover {
+  background-color: rgba(100, 100, 140, 0.5);
+}
+
+.roomSelected {
+  border: 1px solid rgb(120, 142, 197);
+}
+
+ul p,
+form p,
+#roomSelected p,
+#createdRoomsContainer p {
+  font-size: 18px;
+  color: rgb(220, 232, 255);
+  font-weight: normal;
+  text-align: center;
+  border-bottom: 1px solid rgb(72, 105, 175);
+  max-width: 70%;
+  margin: auto;
+}
+
+form p {
+  margin-bottom: 10px;
+}
+
+#roomSelected p {
+  margin-bottom: 10px;
+  width: 300px;
+  max-width: 90%;
+}
+
+#createdRoomsContainer p {
+  margin-bottom: 10px;
+}
+
+tr {
+  padding: 5px 0;
+  text-align: center;
+  margin: auto;
+}
+
+#table-body {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#login {
+  position: absolute !important;
+  margin-left: 20px !important;
+}
+
+#roomSearch {
+  background: rgb(213, 220, 237) url(../images/search.png) right no-repeat;
+  background-size: 25px 25px;
+  background-origin: content-box;
+}
+#user-icon {
+  height: 30px;
+}
+.multi-column {
+  -moz-column-count: 2;
+  -moz-column-gap: 10px;
+  -moz-column-fill: auto;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 10px;
+  -webkit-column-fill: auto;
+  column-count: 2;
+  column-gap: 10px;
+  column-fill: auto;
+  list-style-position: inside;
+}
+
+.flag {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+}
+
+#uk-flag {
+  right: 85px;
+  top: 20px;
+}
+
+#portugal-flag {
+  top: 20px;
+  right: 35px;
+}
