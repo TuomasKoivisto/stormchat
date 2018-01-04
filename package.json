@@ -7,8 +7,15 @@
     "lib": "lib"
   },
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "8.3.0"
+  },
   "author": "Tuomas Koivisto",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }

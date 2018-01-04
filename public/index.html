@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/bolt.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -14,7 +15,6 @@
     <title>StormChat</title>
 </head>
 <body>
-    <!-- Modal -->
   <div id="modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content scrollable">
@@ -30,7 +30,7 @@
           <button id="createRoom" type="button" class="btn flash createRoom"><span class="glyphicon glyphicon-plus"></span><span id="createRoomText"> Create Room</span></button>
           <button id="EnterRoom" type="button" class="btn flash" onclick="listRooms()"><span id="comment-glyphicon" class="glyphicon glyphicon-comment"></span><span id="enterRoomText"> Enter Room</span></button>
         </div>
-            <!--1 Huoneen luonti -->
+
             <form id="createRoomForm" role="form">
             <p>Give your Room a name and password</p>
               <input id="roomName" class="form-group" type="text" name="roomName" placeholder="Room name" maxlength="20">
@@ -39,7 +39,7 @@
             <button id="CreateRoom-button" class="btn btn-default" onclick="createRoom()" type="submit" disabled>Create Room</button>
                 </form>
 
-            <!--2 Huoneeseen liittyminen -->
+
             <div id="createdRoomsContainer">
               <p>Choose room</p>
               <input id="roomSearch" type="text" maxlength="20" placeholder="search room">
@@ -54,7 +54,7 @@
               <button id="chooseRoom-button" class="btn btn-default chooseRoom-hover" onclick="joinRoom()" disabled>Enter Room<span id="login-glyphicon" class="glyphicon glyphicon glyphicon-log-in"></span></button>
               <button id="backToListing" class="btn btn-default chooseRoom-hover">Cancel</button>
             </div>
-            <!--2 Huoneen valinnan jälkeen valitaan nimi -->
+
             <form id="chooseNameForm" class="form-inline">
               <p>Choose a username</p>
               <img id="user-icon" src="images/user.png">
@@ -88,8 +88,6 @@
   <div id="container">
     <div class="row" id="contentBox">
 
-<!-- LeftContentin sisään kaikki vasemman puoliskon sisältö (Viestikenttä yms.).
-    Nuolta klikkaamalla toinen puoli laajentuu ja toinen pienenee.  -->
     <div class="col-xs-12 col-sm-8" id="leftContent">
     <span class="glyphicon glyphicon glyphicon-user menu" id="users" onclick="listUsers()"><span id="users-amount">1</span><span class="tooltiptext">Users</span></span>
       <span class="glyphicon glyphicon-menu-hamburger menu" id="menuBtn"></span>
@@ -97,7 +95,6 @@
         <span class="glyphicon glyphicon glyphicon-download menu" id="download"><span class="tooltiptext">Download</span></span>
       <span class="glyphicon glyphicon-menu-left" id="leftArrow" onclick="openDesk()"></span>
 
-<!-- keskustelualue. Käyttäjät-napista vaihtuu listaan ryhmän käyttäjistä. -->
     <div id="chat-area" class="scrollable">
         <div id="messages">
         <ul id="messagelist">
@@ -112,7 +109,6 @@
         </div>
     </div>
 
-<!-- Tämän divin sisään tekstin kirjoituskenttä & lähetä nappi. -->
       <div class="input-group" id="sendMessage">
         <input id="textArea" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
         <span class="input-group-btn">
@@ -121,8 +117,6 @@
       </div>
     </div>
 
-
-<!-- Oikean puolen sisältö  -->
     <div class="col-xs-0 col-sm-4" id="rightContent">
       <span class="glyphicon glyphicon-menu-right" id="rightArrow" onclick="closeDesk()"></span>
       <textarea id="working-area">
