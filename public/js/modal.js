@@ -1,4 +1,8 @@
-$('#modal').modal('show');
+$(document).ready(function() {
+  $(
+    '#createRoomForm, #createdRoomsContainer, #roomSelected, #chooseNameForm, #feedback, #container'
+  ).removeClass('hidden');
+});
 
 $(
   '#createRoomForm, #chooseNameForm, #createdRoomsContainer, #roomCreatedMessage, #feedback *, #roomSelected'

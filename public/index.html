@@ -15,7 +15,7 @@
     <title>StormChat</title>
 </head>
 <body>
-  <div id="modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div id="modal" class="modal visible" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content scrollable">
       <div class="modal-header">
@@ -31,7 +31,7 @@
           <button id="EnterRoom" type="button" class="btn flash" onclick="listRooms()"><span id="comment-glyphicon" class="glyphicon glyphicon-comment"></span><span id="enterRoomText"> Enter Room</span></button>
         </div>
 
-            <form id="createRoomForm" role="form">
+            <form id="createRoomForm" role="form" class="hidden">
             <p>Give your Room a name and password</p>
               <input id="roomName" class="form-group" type="text" name="roomName" placeholder="Room name" maxlength="20">
             <input id="roomPassword" class="form-group" type="password" name="roomPassword" placeholder="Password" maxlength="20">
@@ -40,7 +40,7 @@
                 </form>
 
 
-            <div id="createdRoomsContainer">
+            <div id="createdRoomsContainer" class="hidden">
               <p>Choose room</p>
               <input id="roomSearch" type="text" maxlength="20" placeholder="search room">
               <ul id="createdRooms" class="multi-column">
@@ -48,14 +48,14 @@
               </ul>
             </div>
 
-            <div id="roomSelected">
+            <div id="roomSelected" class="hidden">
               <p class="roomSelected"></p>
               <input id="passwordRequired" type="password" name="passwordRequired" placeholder="Type password to enter this Room">
               <button id="chooseRoom-button" class="btn btn-default chooseRoom-hover" onclick="joinRoom()" disabled>Enter Room<span id="login-glyphicon" class="glyphicon glyphicon glyphicon-log-in"></span></button>
               <button id="backToListing" class="btn btn-default chooseRoom-hover">Cancel</button>
             </div>
 
-            <form id="chooseNameForm" class="form-inline">
+            <form id="chooseNameForm" class="form-inline hidden">
               <p>Choose a username</p>
               <img id="user-icon" src="images/user.png">
             <input id="username" class="form-group" type="text" maxlength="20">
@@ -63,7 +63,7 @@
              onclick="createUser();" disabled>Choose</button>
             </form>
 
-            <div id="feedback">
+            <div id="feedback" class="hidden">
             -  <p id="short-roomName">Your room name is too short. At least four characters is required.</p>
                 <div>
                   <span id="roomCreatedMessage">You successfully created room</span>
@@ -85,7 +85,7 @@
   </div>
 </div>
 
-  <div id="container">
+  <div id="container" class="hidden">
     <div class="row" id="contentBox">
 
     <div class="col-xs-12 col-sm-8" id="leftContent">
@@ -129,21 +129,13 @@
   </div>
 </div>
   <script>
-  var room = undefined;
+var room = undefined;
 $('#modal').modal({
   backdrop: 'static',
   keyboard: false
 });
-var socket = io();
-
-socket.on('connect', () => {
-  console.log('connected to server');
-});
-
-socket.on('disconnect', () => {
-  console.log('disconnedted from server');
-});
 </script>
+  <script src="js/socket.js"></script>
   <script src="js/workspace.js"></script>
   <script src="js/expand.js"></script>
   <script src="js/modal.js"></script>
