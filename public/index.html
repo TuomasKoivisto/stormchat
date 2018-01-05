@@ -15,7 +15,7 @@
     <title>StormChat</title>
 </head>
 <body>
-  <div id="modal" class="modal visible" tabindex="-1" role="dialog" aria-hidden="true">
+  <div id="modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content scrollable">
       <div class="modal-header">
@@ -36,7 +36,7 @@
               <input id="roomName" class="form-group" type="text" name="roomName" placeholder="Room name" maxlength="20">
             <input id="roomPassword" class="form-group" type="password" name="roomPassword" placeholder="Password" maxlength="20">
             <input id="roomPasswordAgain" class="form-group" type="password" name="roomPassword" placeholder="Password again" maxlength="20">
-            <button id="CreateRoom-button" class="btn btn-default" onclick="createRoom()" type="submit" disabled>Create Room</button>
+            <button id="CreateRoom-button" class="btn btn-default" type="submit" disabled>Create Room</button>
                 </form>
 
 
@@ -51,7 +51,7 @@
             <div id="roomSelected" class="hidden">
               <p class="roomSelected"></p>
               <input id="passwordRequired" type="password" name="passwordRequired" placeholder="Type password to enter this Room">
-              <button id="chooseRoom-button" class="btn btn-default chooseRoom-hover" onclick="joinRoom()" disabled>Enter Room<span id="login-glyphicon" class="glyphicon glyphicon glyphicon-log-in"></span></button>
+              <button id="chooseRoom-button" class="btn btn-default chooseRoom-hover" disabled>Enter Room<span id="login-glyphicon" class="glyphicon glyphicon glyphicon-log-in"></span></button>
               <button id="backToListing" class="btn btn-default chooseRoom-hover">Cancel</button>
             </div>
 
@@ -59,8 +59,7 @@
               <p>Choose a username</p>
               <img id="user-icon" src="images/user.png">
             <input id="username" class="form-group" type="text" maxlength="20">
-            <button id="choosename-button" class="btn btn-default choosename-hover"
-             onclick="createUser();" disabled>Choose</button>
+            <button id="choosename-button" class="btn btn-default choosename-hover" disabled>Choose</button>
             </form>
 
             <div id="feedback" class="hidden">
@@ -89,9 +88,9 @@
     <div class="row" id="contentBox">
 
     <div class="col-xs-12 col-sm-8" id="leftContent">
-    <span class="glyphicon glyphicon glyphicon-user menu" id="users" onclick="listUsers()"><span id="users-amount">1</span><span class="tooltiptext">Users</span></span>
+    <span class="glyphicon glyphicon glyphicon-user menu" id="users"><span id="users-amount">1</span><span class="tooltiptext">Users</span></span>
       <span class="glyphicon glyphicon-menu-hamburger menu" id="menuBtn"></span>
-        <span class="glyphicon glyphicon-log-out menu" id="logout" onclick="leaveRoom()"><span class="tooltiptext">Leave</span></span>
+        <span class="glyphicon glyphicon-log-out menu" id="logout"><span class="tooltiptext">Leave</span></span>
         <span class="glyphicon glyphicon glyphicon-download menu" id="download"><span class="tooltiptext">Download</span></span>
       <span class="glyphicon glyphicon-menu-left" id="leftArrow" onclick="openDesk()"></span>
 
@@ -109,20 +108,17 @@
         </div>
     </div>
 
-      <div class="input-group" id="sendMessage">
-        <input id="textArea" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+      <form class="input-group" id="sendMessage">
+        <input id="textArea" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." name="message"/>
         <span class="input-group-btn">
-          <button class="btn btn-primary btn-sm" id="sendBtn" onclick="sendMessage()">Send</button>
+          <button class="btn btn-primary btn-sm" id="sendBtn">Send</button>
         </span>
-      </div>
+      </form>
     </div>
 
     <div class="col-xs-0 col-sm-4" id="rightContent">
       <span class="glyphicon glyphicon-menu-right" id="rightArrow" onclick="closeDesk()"></span>
-      <textarea id="working-area">
-
-
-        </textarea>
+      <!--<textarea id="working-area"></textarea> -->
     </div>
 
 
@@ -136,10 +132,8 @@ $('#modal').modal({
 });
 </script>
   <script src="js/socket.js"></script>
-  <script src="js/workspace.js"></script>
   <script src="js/expand.js"></script>
   <script src="js/modal.js"></script>
-  <script src="js/chat.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/chat-area.js"></script>
   <script src="js/jquery.nicescroll.js"></script>

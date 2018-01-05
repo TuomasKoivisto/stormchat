@@ -8,6 +8,8 @@ $(
   '#createRoomForm, #chooseNameForm, #createdRoomsContainer, #roomCreatedMessage, #feedback *, #roomSelected'
 ).hide();
 
+$('#modal').modal('hide');
+
 //nappi pois käytöstä
 $('#chooseRoom-button, #CreateRoom-button').prop('disabled', true);
 
