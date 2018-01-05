@@ -421,6 +421,26 @@ p {
   font-size: 12px;
 }
 
+.message_body p{
+  font-size: 12px;
+  color: white;
+  font-weight: normal;
+  text-align: left;
+  border: none;
+  max-width: none;
+  margin: 0px 5px 10px 5px;
+  float: none;
+  clear: both;
+}
+
+.message_title h4 {
+  display: inline;
+  margin: 10px 5px 0px 5px;
+  font-size: 15px;
+}
+.message_title span {
+  margin: 5px 5px 0px 5px;
+}
 .scrollable {
   overflow: auto;
 }

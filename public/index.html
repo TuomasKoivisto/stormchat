@@ -131,7 +131,21 @@ $('#modal').modal({
   keyboard: false
 });
 </script>
+
+  <script id="message-template" type="text/template">
+  <li class="message">
+      <div class="message_title">
+        <h4>{{from}}</h4><span>{{createdAt}}</span>
+      </div>
+      <div class="message_body">
+        <p>{{text}}</p>
+      </div>
+  </li>
+</script>
+
   <script src="js/socket.js"></script>
+  <script src="js/moment.js"></script>
+  <script src="js/libs/mustache.js"></script>
   <script src="js/expand.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/menu.js"></script>
