@@ -8,7 +8,8 @@ $(
   '#createRoomForm, #chooseNameForm, #createdRoomsContainer, #roomCreatedMessage, #feedback *, #roomSelected'
 ).hide();
 
-$('#modal').modal('hide');
+// $('#modal').modal('hide');
+
 
 //nappi pois käytöstä
 $('#chooseRoom-button, #CreateRoom-button').prop('disabled', true);
@@ -122,16 +123,19 @@ $('#EnterRoom').click(function() {
   $(
     '#createRoom, #EnterRoom, #feedback div, #feedback div *, #dismiss-glyphicon'
   ).fadeOut(150);
-  //$('#createdRoomsContainer').delay(150).fadeIn(150);
-  if (getCookie('userID') == undefined) {
     $('#chooseNameForm')
       .delay(150)
       .fadeIn(150);
-  } else {
-    $('#createdRoomsContainer')
-      .delay(150)
-      .fadeIn(150);
-  }
+  //$('#createdRoomsContainer').delay(150).fadeIn(150);
+  // if (getCookie('userID') == undefined) {
+  //   $('#chooseNameForm')
+  //     .delay(150)
+  //     .fadeIn(150);
+  // } else {
+  //   $('#createdRoomsContainer')
+  //     .delay(150)
+  //     .fadeIn(150);
+  // }
   $('.roomSelected').removeClass('roomSelected');
   $('#back-arrow').removeClass('invisible');
 });
@@ -390,7 +394,7 @@ $('#logout').click(function() {
   $('#menuBtn').removeClass('pressed');
   $('#users').removeClass('users-pressed');
   $('#logout, #download, #group-users').hide();
-  $('#messages').show();
+  $('#messagelist').show();
   $('#createRoom, #EnterRoom').fadeIn(150);
 });
 

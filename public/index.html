@@ -15,7 +15,7 @@
     <title>StormChat</title>
 </head>
 <body>
-  <div id="modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div id="modal" class="modal visible" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content scrollable">
       <div class="modal-header">
@@ -28,13 +28,13 @@
         <div id="main-menu" class="btn-group-vertical" role="group" aria-label="Basic example">
             <!-- aloitusvalinnat -->
           <button id="createRoom" type="button" class="btn flash createRoom"><span class="glyphicon glyphicon-plus"></span><span id="createRoomText"> Create Room</span></button>
-          <button id="EnterRoom" type="button" class="btn flash" onclick="listRooms()"><span id="comment-glyphicon" class="glyphicon glyphicon-comment"></span><span id="enterRoomText"> Enter Room</span></button>
+          <button id="EnterRoom" type="button" class="btn flash"><span id="comment-glyphicon" class="glyphicon glyphicon-comment"></span><span id="enterRoomText"> Enter Room</span></button>
         </div>
 
-            <form id="createRoomForm" role="form" class="hidden">
+            <form id="createRoomForm" role="form" class="hidden" action="#main-menu">
             <p>Give your Room a name and password</p>
-              <input id="roomName" class="form-group" type="text" name="roomName" placeholder="Room name" maxlength="20">
-            <input id="roomPassword" class="form-group" type="password" name="roomPassword" placeholder="Password" maxlength="20">
+              <input id="roomName" class="form-group" type="text" name="roomName" placeholder="Room name" maxlength="20" name="roomName">
+            <input id="roomPassword" class="form-group" type="password" name="roomPassword" placeholder="Password" maxlength="20" name="password">
             <input id="roomPasswordAgain" class="form-group" type="password" name="roomPassword" placeholder="Password again" maxlength="20">
             <button id="CreateRoom-button" class="btn btn-default" type="submit" disabled>Create Room</button>
                 </form>
@@ -95,12 +95,10 @@
       <span class="glyphicon glyphicon-menu-left" id="leftArrow" onclick="openDesk()"></span>
 
     <div id="chat-area" class="scrollable">
-        <div id="messages">
         <ul id="messagelist">
 
         </ul>
 
-        </div>
         <div id="group-users">
             <p>Users: </p>
             <ol id="userlist">

@@ -7,5 +7,5 @@ $('#menuBtn').click(function() {
 
 $('#users').click(function() {
     $(this).toggleClass('users-pressed');
-    $('#messages, #group-users').fadeToggle(300);
+    $('#messagelist, #group-users').fadeToggle(300);
 })
