@@ -88,7 +88,7 @@
     <div class="row" id="contentBox">
 
     <div class="col-xs-12 col-sm-8" id="leftContent">
-    <span class="glyphicon glyphicon glyphicon-user menu" id="users"><span id="users-amount">1</span><span class="tooltiptext">Users</span></span>
+    <span class="glyphicon glyphicon glyphicon-user menu" id="users"><span id="users-amount">0</span><span class="tooltiptext">Users</span></span>
       <span class="glyphicon glyphicon-menu-hamburger menu" id="menuBtn"></span>
         <span class="glyphicon glyphicon-log-out menu" id="logout"><span class="tooltiptext">Leave</span></span>
         <span class="glyphicon glyphicon glyphicon-download menu" id="download"><span class="tooltiptext">Download</span></span>
@@ -140,6 +140,23 @@ $('#modal').modal({
     <p>{{ text }}</p>
   </div>
 </li>
+</script>
+
+<script>
+function logOut() {
+  $('#modal').modal('show');
+  $('#menuBtn').removeClass('pressed');
+  $('#users').removeClass('users-pressed');
+  $('#logout, #download, #group-users').hide();
+  $('#messagelist').show();
+  $('#createRoom, #EnterRoom').fadeIn(150);
+  socket.emit('leaveRoom', {
+    user: localStorage.getItem('name'),
+    room: localStorage.getItem('room')
+  });
+  localStorage.setItem('name', '');
+  localStorage.setItem('room', '');
+}
 </script>
 
   <script src="js/socket.js"></script>

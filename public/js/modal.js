@@ -208,6 +208,8 @@ $('#dismiss-glyphicon').click(function() {
 });
 
 $('#enter-now-button').click(function() {
+  console.log($('#createdRoom').text());
+  localStorage.setItem('room', $('#createdRoom').text());
   $(
     '#createRoom, #EnterRoom, #feedback div, #feedback div *, #dismiss-glyphicon'
   ).fadeOut(150);
@@ -419,6 +421,11 @@ $('#choosename-button').click(function() {
     roomname: localStorage.getItem('room')
   });
   socket.emit('refreshUsers', localStorage.getItem('room'));
+  socket.emit('newUser', {
+    user: localStorage.getItem('name'),
+    room: localStorage.getItem('room')
+  });
+  socket.emit('welcomeText');
   clearFeedback();
   $('#chooseNameForm').fadeOut(150);
   $('#modal')
@@ -440,13 +447,18 @@ $('#roomSearch').keyup(function() {
 });
 
 $('#logout').click(function() {
-  //setCookie("userID","undefined");
-  $('#modal').modal('toggle');
+  $('#modal').modal('show');
   $('#menuBtn').removeClass('pressed');
   $('#users').removeClass('users-pressed');
   $('#logout, #download, #group-users').hide();
   $('#messagelist').show();
   $('#createRoom, #EnterRoom').fadeIn(150);
+  socket.emit('leaveRoom', {
+    user: localStorage.getItem('name'),
+    room: localStorage.getItem('room')
+  });
+  localStorage.setItem('name', '');
+  localStorage.setItem('room', '');
 });
 
 //Jos huonelista tyhjä

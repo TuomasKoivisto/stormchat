@@ -37,7 +37,9 @@ function updateUsersList(room) {
     li.text(`${room.users[i]}`);
     $('#userlist').append(li);
   }
+  $('#users-amount').text(room.users.length);
 }
+
 
 socket.on('connect', function() {
   console.log('connected to server');
@@ -53,14 +55,40 @@ socket.on('listRooms', function(rooms) {
 });
 
 socket.on('sendUserList', function(room) {
-  if (localStorage.getItem('room') === room.name) {
-    updateUsersList(room);
+    if (localStorage.getItem('room') === room.name) {
+      updateUsersList(room);
+    }
+})
+
+socket.on('NewUserJoined', (data) => {
+  if (localStorage.getItem('room') === data.room) {
+    var formattedTime = moment(data.createdAt).format('h:mm a');
+    var template = $('#message-template').html();
+    var html = Mustache.render(template, {
+      text: data.text,
+      from: 'Admin',
+      createdAt: formattedTime
+    });
+    $('#messagelist').append(html);
+    scrollToBottom();
   }
 })
 
+socket.on('sendWelcomeText', function(message) {
+  console.log(message);
+  var formattedTime = moment(message.createdAt).format('h:mm a');
+  var template = $('#message-template').html();
+  var html = Mustache.render(template, {
+    text: message.text,
+    from: message.from,
+    createdAt: formattedTime
+  });
+  $('#messagelist').append(html);
+  scrollToBottom();
+  console.log('vastaanotettu serveriltä');
+})
+
 socket.on('newMessage', function(message) {
-  console.log(message.room);
-  console.log(localStorage.getItem('room'))
   if (message.room === localStorage.getItem('room')) {
     var formattedTime = moment(message.createdAt).format('h:mm a');
     var template = $('#message-template').html();
@@ -77,16 +105,24 @@ socket.on('newMessage', function(message) {
 
 $('#sendMessage').on('submit', function(e) {
   e.preventDefault();
+  console.log(localStorage.getItem('name').length);
+  console.log(localStorage.getItem('room'));
+  if (localStorage.getItem('name') == '' || localStorage.getItem('room').length == '') {
+    logOut();
+  } else if ($('#textArea').val() === '') {
 
-  socket.emit(
-    'createMessage',
-    {
-      from: localStorage.getItem('name'),
-      text: $('[name=message]').val(),
-      room: localStorage.getItem('room')
-    },
-    function() {}
-  );
+  } else {
+    socket.emit(
+      'createMessage',
+      {
+        from: localStorage.getItem('name'),
+        text: $('[name=message]').val(),
+        room: localStorage.getItem('room')
+      },
+      function() {}
+    );
+  }
+  $('#textArea').val('');
 });
 
 $('#createRoomForm').on('submit', function(e) {

@@ -7,5 +7,12 @@ $('#menuBtn').click(function() {
 
 $('#users').click(function() {
     $(this).toggleClass('users-pressed');
-    $('#messagelist, #group-users').fadeToggle(300);
+    if (!$(this).hasClass('users-pressed')) {
+      $('#group-users').fadeOut(150);
+      $('#messagelist').delay(150).fadeIn(150);
+    } else {
+      $('#messagelist').fadeOut(150);
+      $('#group-users').delay(150).fadeIn(150);
+    }
+    //$('#messagelist, #group-users').fadeToggle(300);
 })

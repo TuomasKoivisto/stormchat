@@ -21,6 +21,14 @@ io.on('connection', socket => {
     rooms.addRoom(room.name, room.password);
   });
 
+  socket.on('welcomeText', () => {
+    socket.emit('sendWelcomeText', generateMessage('Admin', 'Welcome to StormChat', ''));
+  });
+
+  socket.on('connect', () => {
+    socket.emit('sendWelcomeText', generateMessage('Admin', 'Welcome to StormChat', ''));
+  });
+
   socket.emit('listRooms', rooms.rooms);
 
   socket.on('listRooms', () => {
@@ -40,12 +48,15 @@ io.on('connection', socket => {
     io.emit('sendUserList', rooms.getUsers(room))
   })
 
-  socket.emit('newMessage', generateMessage('Admin', 'Welcome to StormChat'));
+  socket.on('newUser', data => {
+    io.emit('NewUserJoined', generateMessage(data.user, data.user + ' joined the room', data.room)
+    )
+  })
 
-  socket.broadcast.emit(
-    'newMessage',
-    generateMessage('Admin', 'New user joined')
-  );
+  socket.on('leaveRoom', user => {
+    rooms.removeUser(user);
+    io.emit('sendUserList', rooms.getUsers(user.room));
+});
 
   socket.on('createMessage', (message, callback) => {
     io.emit('newMessage', generateMessage(message.from, message.text, message.room));

@@ -42,6 +42,17 @@ class Rooms {
       }
     }
   }
+  removeUser(user) {
+    for (var i in this.rooms) {
+      if (this.rooms[i].name == user.room) {
+        console.log(this.rooms[i].users)
+        this.rooms[i].users = this.rooms[i].users.filter((users) => {
+          return users !== user.user
+        });
+        console.log(this.rooms[i].users);
+      }
+    }
+  }
 }
 
 module.exports = { Rooms };
