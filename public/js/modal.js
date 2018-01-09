@@ -111,7 +111,20 @@ $('#chooseRoom-button').click(function() {
 });
 
 //Create room -valikkoon
-$('#createRoom').click(function() {
+// $('#createRoom').click(function() {
+//   clearFeedback();
+//   $('#createRoomForm')
+//     .delay(150)
+//     .fadeIn(150);
+//   $('#back-arrow').removeClass('invisible');
+//   $(
+//     '#createRoom, #EnterRoom, #feedback div, #feedback div, #dismiss-glyphicon'
+//   ).fadeOut(150);
+//   clearFields();
+//   $('#CreateRoom-button').prop('disabled', true);
+// });
+
+$('#createRoom').on('click touchstart', function() {
   clearFeedback();
   $('#createRoomForm')
     .delay(150)
@@ -123,6 +136,7 @@ $('#createRoom').click(function() {
   clearFields();
   $('#CreateRoom-button').prop('disabled', true);
 });
+
 //back
 $('#back-arrow').click(function() {
   clearFeedback();
