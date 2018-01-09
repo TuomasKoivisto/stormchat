@@ -110,7 +110,6 @@ $('#chooseRoom-button').click(function() {
   $('#choosename-button').prop('disabled', true);
 });
 
-//Create room -valikkoon
 // $('#createRoom').click(function() {
 //   clearFeedback();
 //   $('#createRoomForm')
@@ -124,7 +123,7 @@ $('#chooseRoom-button').click(function() {
 //   $('#CreateRoom-button').prop('disabled', true);
 // });
 
-$('#createRoom').bind('click touchstart', function() {
+$('#createRoom').on('click', function() {
   clearFeedback();
   $('#createRoomForm')
     .delay(150)
