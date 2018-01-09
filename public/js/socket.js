@@ -11,8 +11,22 @@ function scrollToBottom() {
   var newMessageHeight = newMessage.innerHeight();
   var lastMessageHeight = newMessage.prev().innerHeight();
 
-  if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight>= scrollHeight) {
+  if (
+    clientHeight + scrollTop + newMessageHeight + lastMessageHeight >=
+    scrollHeight
+  ) {
     messages.scrollTop(scrollHeight);
+  }
+}
+
+function updateRoomsList(rooms) {
+  $('#createdRooms').html('');
+  for (var i in rooms) {
+    //console.log(rooms[i]);
+    var li = $('<li></li>');
+    li.addClass('listedRoom listedRoom-hover');
+    li.text(`${rooms[i].name}`);
+    $('#createdRooms').append(li);
   }
 }
 
@@ -24,17 +38,26 @@ socket.on('disconnect', function() {
   console.log('disconnedted from server');
 });
 
-socket.on('newMessage', function(message) {
-  var formattedTime = moment(message.createdAt).format('h:mm a');
-  var template = $('#message-template').html();
-  var html = Mustache.render(template, {
-    text: message.text,
-    from: message.from,
-    createdAt: formattedTime
-  });
+socket.on('listRooms', function(rooms) {
+  console.log('rooms list', rooms);
+  updateRoomsList(rooms);
+});
 
-  $('#messagelist').append(html);
-  scrollToBottom();
+socket.on('newMessage', function(message) {
+  console.log(message.room);
+  console.log(localStorage.getItem('room'))
+  if (message.room === localStorage.getItem('room')) {
+    var formattedTime = moment(message.createdAt).format('h:mm a');
+    var template = $('#message-template').html();
+    var html = Mustache.render(template, {
+      text: message.text,
+      from: message.from,
+      createdAt: formattedTime
+    });
+    $('#messagelist').append(html);
+    scrollToBottom();
+  }
+
 });
 
 $('#sendMessage').on('submit', function(e) {
@@ -43,9 +66,19 @@ $('#sendMessage').on('submit', function(e) {
   socket.emit(
     'createMessage',
     {
-      from: 'User',
-      text: $('[name=message]').val()
+      from: localStorage.getItem('name'),
+      text: $('[name=message]').val(),
+      room: localStorage.getItem('room')
     },
     function() {}
   );
+});
+
+$('#createRoomForm').on('submit', function(e) {
+  // e.preventDefault();
+  // socket.emit('addRoom', {
+  //   name: $('[name=roomName]').val(),
+  //   password: $('[name=roomPassword]').val()
+  // });
+  //SIIRRETTY MODAL.JS:ään
 });

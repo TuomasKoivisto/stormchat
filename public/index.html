@@ -15,7 +15,7 @@
     <title>StormChat</title>
 </head>
 <body>
-  <div id="modal" class="modal visible" tabindex="-1" role="dialog" aria-hidden="true">
+  <div id="modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content scrollable">
       <div class="modal-header">
@@ -31,10 +31,10 @@
           <button id="EnterRoom" type="button" class="btn flash"><span id="comment-glyphicon" class="glyphicon glyphicon-comment"></span><span id="enterRoomText"> Enter Room</span></button>
         </div>
 
-            <form id="createRoomForm" role="form" class="hidden" action="#main-menu">
+            <form id="createRoomForm" role="form" class="hidden">
             <p>Give your Room a name and password</p>
-              <input id="roomName" class="form-group" type="text" name="roomName" placeholder="Room name" maxlength="20" name="roomName">
-            <input id="roomPassword" class="form-group" type="password" name="roomPassword" placeholder="Password" maxlength="20" name="password">
+              <input id="roomName" class="form-group" type="text" name="roomName" placeholder="Room name" maxlength="20">
+            <input id="roomPassword" class="form-group" type="password" name="roomPassword" placeholder="Password" maxlength="20">
             <input id="roomPasswordAgain" class="form-group" type="password" name="roomPassword" placeholder="Password again" maxlength="20">
             <button id="CreateRoom-button" class="btn btn-default" type="submit" disabled>Create Room</button>
                 </form>
@@ -44,7 +44,7 @@
               <p>Choose room</p>
               <input id="roomSearch" type="text" maxlength="20" placeholder="search room">
               <ul id="createdRooms" class="multi-column">
-                <li class="listedRoom listedRoom-hover">huone</li>
+                <!-- <li class="listedRoom listedRoom-hover">huone</li> -->
               </ul>
             </div>
 
@@ -127,18 +127,19 @@ var room = undefined;
 $('#modal').modal({
   backdrop: 'static',
   keyboard: false
-});
+})
 </script>
 
   <script id="message-template" type="text/template">
   <li class="message">
-      <div class="message_title">
-        <h4>{{from}}</h4><span>{{createdAt}}</span>
-      </div>
-      <div class="message_body">
-        <p>{{text}}</p>
-      </div>
-  </li>
+  <div class="message_title">
+    <h4>{{ from }}</h4>
+    <span>{{ createdAt }}</span>
+  </div>
+  <div class="message_body">
+    <p>{{ text }}</p>
+  </div>
+</li>
 </script>
 
   <script src="js/socket.js"></script>
