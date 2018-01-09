@@ -124,7 +124,7 @@ $('#chooseRoom-button').click(function() {
 //   $('#CreateRoom-button').prop('disabled', true);
 // });
 
-$('#createRoom').on('click touchstart', function() {
+$('#createRoom').bind('click touchstart', function() {
   clearFeedback();
   $('#createRoomForm')
     .delay(150)
