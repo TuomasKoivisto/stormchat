@@ -22,11 +22,20 @@ function scrollToBottom() {
 function updateRoomsList(rooms) {
   $('#createdRooms').html('');
   for (var i in rooms) {
-    //console.log(rooms[i]);
     var li = $('<li></li>');
     li.addClass('listedRoom listedRoom-hover');
     li.text(`${rooms[i].name}`);
     $('#createdRooms').append(li);
+  }
+}
+
+function updateUsersList(room) {
+  $('#userlist').html('');
+  for (var i in room.users) {
+    //console.log(rooms[i]);
+    var li = $('<li></li>');
+    li.text(`${room.users[i]}`);
+    $('#userlist').append(li);
   }
 }
 
@@ -42,6 +51,12 @@ socket.on('listRooms', function(rooms) {
   console.log('rooms list', rooms);
   updateRoomsList(rooms);
 });
+
+socket.on('sendUserList', function(room) {
+  if (localStorage.getItem('room') === room.name) {
+    updateUsersList(room);
+  }
+})
 
 socket.on('newMessage', function(message) {
   console.log(message.room);

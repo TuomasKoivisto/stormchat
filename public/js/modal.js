@@ -110,20 +110,7 @@ $('#chooseRoom-button').click(function() {
   $('#choosename-button').prop('disabled', true);
 });
 
-// $('#createRoom').click(function() {
-//   clearFeedback();
-//   $('#createRoomForm')
-//     .delay(150)
-//     .fadeIn(150);
-//   $('#back-arrow').removeClass('invisible');
-//   $(
-//     '#createRoom, #EnterRoom, #feedback div, #feedback div, #dismiss-glyphicon'
-//   ).fadeOut(150);
-//   clearFields();
-//   $('#CreateRoom-button').prop('disabled', true);
-// });
-
-$('#createRoom').on('click', function() {
+$('#createRoom').click(function() {
   clearFeedback();
   $('#createRoomForm')
     .delay(150)
@@ -135,6 +122,19 @@ $('#createRoom').on('click', function() {
   clearFields();
   $('#CreateRoom-button').prop('disabled', true);
 });
+
+// $('#createRoom').on('click', function() {
+//   clearFeedback();
+//   $('#createRoomForm')
+//     .delay(150)
+//     .fadeIn(150);
+//   $('#back-arrow').removeClass('invisible');
+//   $(
+//     '#createRoom, #EnterRoom, #feedback div, #feedback div, #dismiss-glyphicon'
+//   ).fadeOut(150);
+//   clearFields();
+//   $('#CreateRoom-button').prop('disabled', true);
+// });
 
 //back
 $('#back-arrow').click(function() {
@@ -418,6 +418,7 @@ $('#choosename-button').click(function() {
     username: $('#username').val(),
     roomname: localStorage.getItem('room')
   });
+  socket.emit('refreshUsers', localStorage.getItem('room'));
   clearFeedback();
   $('#chooseNameForm').fadeOut(150);
   $('#modal')

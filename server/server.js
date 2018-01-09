@@ -17,8 +17,6 @@ var rooms = new Rooms();
 app.use(express.static(publicPath));
 
 io.on('connection', socket => {
-  console.log('new user connected');
-
   socket.on('addRoom', room => {
     rooms.addRoom(room.name, room.password);
   });
@@ -30,8 +28,6 @@ io.on('connection', socket => {
   });
 
   socket.on('checkPassword', room => {
-    console.log('room name', room.name);
-    console.log('room password', room.password);
     var access = rooms.checkPassword(room.name, room.password);
     socket.emit('passwordResult', access);
   });
@@ -39,6 +35,10 @@ io.on('connection', socket => {
   socket.on('nameSelected', userObject => {
     rooms.addUser(userObject.roomname, userObject.username);
   });
+
+  socket.on('refreshUsers', (room) => {
+    io.emit('sendUserList', rooms.getUsers(room))
+  })
 
   socket.emit('newMessage', generateMessage('Admin', 'Welcome to StormChat'));
 
@@ -48,7 +48,6 @@ io.on('connection', socket => {
   );
 
   socket.on('createMessage', (message, callback) => {
-    console.log('createMessage', message);
     io.emit('newMessage', generateMessage(message.from, message.text, message.room));
     callback('this is from the server');
   });

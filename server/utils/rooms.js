@@ -15,7 +15,7 @@ class Rooms {
   }
   deleteRoom() {}
   listRooms() {
-    console.log(this.rooms);
+    //console.log(this.rooms);
   }
   checkPassword(name, password) {
     var access = false;
@@ -33,6 +33,14 @@ class Rooms {
       }
     }
     this.listRooms();
+  }
+  getUsers(room) {
+    for (var i in this.rooms) {
+      if (this.rooms[i].name == room) {
+        console.log(this.rooms[i].users)
+        return this.rooms[i];
+      }
+    }
   }
 }
 
