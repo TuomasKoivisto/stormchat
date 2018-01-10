@@ -18,7 +18,15 @@ app.use(express.static(publicPath));
 
 io.on('connection', socket => {
   socket.on('addRoom', room => {
-    rooms.addRoom(room.name, room.password);
+    //rooms.addRoom(room.name, room.password);
+
+    var check = rooms.checkIfRoomExists(room);
+    if (check === 'does not exist') {
+      rooms.addRoom(room.name, room.password);
+      socket.emit('roomDoesNotExist');
+    } else {
+      socket.emit('roomExists');
+    }
   });
 
   socket.on('welcomeText', () => {

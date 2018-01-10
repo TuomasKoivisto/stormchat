@@ -56,6 +56,16 @@ class Rooms {
   }
   return username;
 }
+
+checkIfRoomExists(room) {
+  var result = 'does not exist';
+  for (var i in this.rooms) {
+    if (this.rooms[i].name == room.name) {
+          result = 'exists';
+    }
+  }
+return result;
+}
 }
 
 module.exports = { Rooms };

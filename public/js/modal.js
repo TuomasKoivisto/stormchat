@@ -145,6 +145,9 @@ $('#CreateRoom-button').click(function(e) {
     name: $('[name=roomName]').val(),
     password: $('[name=roomPassword]').val()
   });
+});
+
+socket.on('roomDoesNotExist', () => {
   socket.emit('listRooms');
   room = undefined;
   clearFeedback();
@@ -162,7 +165,22 @@ $('#CreateRoom-button').click(function(e) {
     .fadeIn(150);
   clearFields();
   clearInputBackground();
-});
+})
+
+socket.on('roomExists', () => {
+  clearFeedback();
+  $('#roomAlreadyExists').fadeIn(150);
+  $('#roomAlreadyExists')
+    .delay(5000)
+    .fadeOut(150);
+    $('#CreateRoom-button').prop('disabled', true);
+    $('#roomName').css(
+      'background',
+      'rgb(213,220,237) url(images/error.png) right no-repeat'
+    );
+    $('#roomName').css('background-size', '18px 18px');
+    $('#roomName').css('background-origin', 'content-box');
+})
 
 $('#dismiss-glyphicon').click(function() {
   $('#feedback div, #feedback div *, #dismiss-glyphicon').fadeOut(150);
