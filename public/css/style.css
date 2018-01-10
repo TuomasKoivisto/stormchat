@@ -479,7 +479,7 @@ p {
 #createdRooms {
   list-style-type: none;
   margin: auto;
-  min-height: 100px;
+  margin-top: 20px;
 }
 
 .listedRoom {
