@@ -42,7 +42,6 @@ io.on('connection', socket => {
 
   socket.on('nameSelected', userObject => {
     var check = rooms.checkUserName(userObject);
-    console.log(check);
     if (check === 'not taken') {
       rooms.addUser(userObject.roomname, userObject.username);
       socket.emit('nameNotTaken');
@@ -71,9 +70,6 @@ io.on('connection', socket => {
     callback('this is from the server');
   });
 
-  socket.on('disconnect', () => {
-    console.log('user disconnected from server');
-  });
 });
 
 server.listen(port, () => {

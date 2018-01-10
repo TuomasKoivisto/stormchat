@@ -32,7 +32,6 @@ function updateRoomsList(rooms) {
 function updateUsersList(room) {
   $('#userlist').html('');
   for (var i in room.users) {
-    //console.log(rooms[i]);
     var li = $('<li></li>');
     li.text(`${room.users[i]}`);
     $('#userlist').append(li);
@@ -40,17 +39,7 @@ function updateUsersList(room) {
   $('#users-amount').text(room.users.length);
 }
 
-
-socket.on('connect', function() {
-  console.log('connected to server');
-});
-
-socket.on('disconnect', function() {
-  console.log('disconnedted from server');
-});
-
 socket.on('listRooms', function(rooms) {
-  console.log('rooms list', rooms);
   updateRoomsList(rooms);
 });
 
@@ -75,7 +64,6 @@ socket.on('NewUserJoined', (data) => {
 })
 
 socket.on('sendWelcomeText', function(message) {
-  console.log(message);
   var formattedTime = moment(message.createdAt).format('h:mm a');
   var template = $('#message-template').html();
   var html = Mustache.render(template, {
@@ -85,7 +73,6 @@ socket.on('sendWelcomeText', function(message) {
   });
   $('#messagelist').append(html);
   scrollToBottom();
-  console.log('vastaanotettu serveriltä');
 })
 
 socket.on('newMessage', function(message) {
@@ -105,8 +92,6 @@ socket.on('newMessage', function(message) {
 
 $('#sendMessage').on('submit', function(e) {
   e.preventDefault();
-  console.log(localStorage.getItem('name').length);
-  console.log(localStorage.getItem('room'));
   if (localStorage.getItem('name') == '' || localStorage.getItem('room').length == '') {
     logOut();
   } else if ($('#textArea').val() === '') {
@@ -123,13 +108,4 @@ $('#sendMessage').on('submit', function(e) {
     );
   }
   $('#textArea').val('');
-});
-
-$('#createRoomForm').on('submit', function(e) {
-  // e.preventDefault();
-  // socket.emit('addRoom', {
-  //   name: $('[name=roomName]').val(),
-  //   password: $('[name=roomPassword]').val()
-  // });
-  //SIIRRETTY MODAL.JS:ään
 });

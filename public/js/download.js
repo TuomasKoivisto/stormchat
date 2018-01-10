@@ -3,6 +3,7 @@ $('#download').on('click', function() {
 });
 
 $("#download-confirm").click(function() {
+  $('#download-modal').modal('hide');
   // create `a` element
   $("<a />", {
       // if supported , set name of file

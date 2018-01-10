@@ -9,7 +9,6 @@ class Rooms {
   }
   deleteRoom() {}
   listRooms() {
-    //console.log(this.rooms);
   }
   checkPassword(name, password) {
     var access = false;
@@ -31,7 +30,6 @@ class Rooms {
   getUsers(room) {
     for (var i in this.rooms) {
       if (this.rooms[i].name == room) {
-        console.log(this.rooms[i].users)
         return this.rooms[i];
       }
     }
@@ -39,11 +37,9 @@ class Rooms {
   removeUser(user) {
     for (var i in this.rooms) {
       if (this.rooms[i].name == user.room) {
-        console.log(this.rooms[i].users)
         this.rooms[i].users = this.rooms[i].users.filter((users) => {
           return users !== user.user
         });
-        console.log(this.rooms[i].users);
       }
     }
   }
@@ -52,7 +48,7 @@ class Rooms {
     for (var i in this.rooms) {
       if (this.rooms[i].name == user.roomname) {
         for (var j in this.rooms[i].users) {
-          if (this.rooms[i].users === user.username) {
+          if (this.rooms[i].users[j] === user.username) {
             username = 'taken';
           }
       }

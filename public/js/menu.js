@@ -14,5 +14,4 @@ $('#users').click(function() {
       $('#messagelist').fadeOut(150);
       $('#group-users').delay(150).fadeIn(150);
     }
-    //$('#messagelist, #group-users').fadeToggle(300);
 })
