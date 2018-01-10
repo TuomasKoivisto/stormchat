@@ -1,12 +1,6 @@
 class Rooms {
   constructor() {
-    this.rooms = [
-      {
-        name: 'test',
-        password: 'salasana',
-        users: []
-      }
-    ];
+    this.rooms = [];
   }
   addRoom(name, password) {
     var room = { name, password, users: [] };

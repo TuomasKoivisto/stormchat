@@ -213,7 +213,7 @@ $('#enter-now-button').click(function() {
   $(
     '#createRoom, #EnterRoom, #feedback div, #feedback div *, #dismiss-glyphicon'
   ).fadeOut(150);
-  $('#roomSelected')
+  $('#chooseNameForm')
     .delay(150)
     .fadeIn(150);
   $('#createdRoom').toggleClass('roomSelected');

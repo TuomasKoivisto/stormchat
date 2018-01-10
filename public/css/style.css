@@ -531,7 +531,7 @@ tr {
   -webkit-column-fill: auto;
   column-count: 2;
   column-gap: 10px;
-  column-fill: auto;
+  /*column-fill: auto;*/
   list-style-position: inside;
 }
 
@@ -549,4 +549,16 @@ tr {
 #portugal-flag {
   top: 20px;
   right: 35px;
+}
+
+@media only screen and (max-width: 400px) {
+  #uk-flag {
+    right: 30px;
+    top: 20px;
+  }
+
+  #portugal-flag {
+    top: 20px;
+    right: 0px;
+  }
 }
