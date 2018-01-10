@@ -420,6 +420,9 @@ $('#choosename-button').click(function() {
     username: $('#username').val(),
     roomname: localStorage.getItem('room')
   });
+});
+
+socket.on('nameNotTaken', () => {
   socket.emit('refreshUsers', localStorage.getItem('room'));
   socket.emit('newUser', {
     user: localStorage.getItem('name'),
@@ -431,7 +434,11 @@ $('#choosename-button').click(function() {
   $('#modal')
     .delay(150)
     .modal('hide');
-});
+})
+
+socket.on('nameTaken',() => {
+  console.log('name taken');
+})
 
 //Huoneen hakeminen
 $('#roomSearch').keyup(function() {

@@ -41,7 +41,15 @@ io.on('connection', socket => {
   });
 
   socket.on('nameSelected', userObject => {
-    rooms.addUser(userObject.roomname, userObject.username);
+    var check = rooms.checkUserName(userObject);
+    console.log(check);
+    if (check === 'not taken') {
+      rooms.addUser(userObject.roomname, userObject.username);
+      socket.emit('nameNotTaken');
+    } else {
+      socket.emit('nameTaken');
+    }
+
   });
 
   socket.on('refreshUsers', (room) => {

@@ -47,6 +47,19 @@ class Rooms {
       }
     }
   }
+  checkUserName(user) {
+    var username = 'not taken';
+    for (var i in this.rooms) {
+      if (this.rooms[i].name == user.roomname) {
+        for (var j in this.rooms[i].users) {
+          if (this.rooms[i].users === user.username) {
+            username = 'taken';
+          }
+      }
+    }
+  }
+  return username;
+}
 }
 
 module.exports = { Rooms };
