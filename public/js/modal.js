@@ -446,7 +446,12 @@ $('#roomSearch').keyup(function() {
   });
 });
 
-$('#logout').click(function() {
+$('#logout').on('click', function() {
+  $('#logout-modal').modal('show');
+})
+
+$('#logout-confirm').click(function() {
+  $('#logout-modal').modal('hide');
   $('#modal').modal('show');
   $('#menuBtn').removeClass('pressed');
   $('#users').removeClass('users-pressed');
@@ -460,6 +465,10 @@ $('#logout').click(function() {
   localStorage.setItem('name', '');
   localStorage.setItem('room', '');
 });
+
+$('#textArea').on('focusin', function() {
+  $(this).css('width', '100%');
+})
 
 //Jos huonelista tyhjä
 /*if ($.trim($('div ul').html()) == "")) {

@@ -1,4 +1,8 @@
-$("#download").click(function() {
+$('#download').on('click', function() {
+  $('#download-modal').modal('show');
+});
+
+$("#download-confirm").click(function() {
   // create `a` element
   $("<a />", {
       // if supported , set name of file
@@ -13,7 +17,7 @@ $("#download").click(function() {
     // call `click` on `DOM` element `a`
     .appendTo("body")[0].click();
     // remove appended `a` element after "Save File" dialog,
-    // `window` regains `focus` 
+    // `window` regains `focus`
     $(window).one("focus", function() {
       $("a").last().remove()
     })

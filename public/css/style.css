@@ -77,6 +77,16 @@ body {
   color: #999999;
 }
 
+#MobileLeftArrow {
+  font-size: 1.8em;
+  margin: auto;
+  color: #666666;
+}
+
+#MobileLeftArrow:hover {
+  color: #999999;
+}
+
 #rightArrow {
   font-size: 1.8em;
   color: #666666;
@@ -85,6 +95,18 @@ body {
 }
 
 #rightArrow:hover {
+  color: #999999;
+}
+
+#MobileRightArrow {
+  font-size: 1.8em;
+  float: right;
+  color: #666666;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#MobileRightArrow:hover {
   color: #999999;
 }
 
@@ -419,6 +441,11 @@ body {
   resize: none;
 }
 
+#download-modal p{
+  font-size: 18px;
+  color: white;
+}
+
 p {
   font-size: 12px;
 }
@@ -560,5 +587,20 @@ tr {
   #portugal-flag {
     top: 20px;
     right: 0px;
+  }
+  #textArea {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #leftArrow, #rightArrow {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #MobileLeftArrow, #MobileRightArrow {
+    display: none;
   }
 }

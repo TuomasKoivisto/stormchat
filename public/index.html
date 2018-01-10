@@ -93,6 +93,7 @@
         <span class="glyphicon glyphicon-log-out menu" id="logout"><span class="tooltiptext">Leave</span></span>
         <span class="glyphicon glyphicon glyphicon-download menu" id="download"><span class="tooltiptext">Download</span></span>
       <span class="glyphicon glyphicon-menu-left" id="leftArrow" onclick="openDesk()"></span>
+      <span class="glyphicon glyphicon-menu-right" id="MobileRightArrow" onclick="openDesk()"></span>
 
     <div id="chat-area" class="scrollable">
         <ul id="messagelist">
@@ -116,8 +117,34 @@
 
     <div class="col-xs-0 col-sm-4" id="rightContent">
       <span class="glyphicon glyphicon-menu-right" id="rightArrow" onclick="closeDesk()"></span>
+      <span class="glyphicon glyphicon-menu-left hidden" id="MobileLeftArrow" onclick="closeDesk()"></span>
       <!--<textarea id="working-area"></textarea> -->
     </div>
+
+    <div id="logout-modal" class="modal fade bd-example-modal-sm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button id="logout-confirm" type="button" class="btn btn-primary">Leave Room</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="download-modal" class="modal fade bd-example-modal-sm">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-body">
+    <p >Download textarea content as a .txt file?</p>
+  </div>
+  <div class="modal-footer">
+    <button id="download-confirm" type="button" class="btn btn-primary">Download</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  </div>
+</div>
+</div>
+</div>
 
 
   </div>
