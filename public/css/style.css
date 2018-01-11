@@ -485,9 +485,10 @@ p {
 .listedRoom {
   color: rgb(220, 232, 255);
   width: 300px;
-  max-width: 90%;
+  max-width: 45%;
   font-size: 18px;
   font-family: Bookman, serif;
+  padding: 5px 0;
   border: 1px solid rgba(120, 142, 197, 0);
 }
 
