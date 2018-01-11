@@ -203,7 +203,7 @@ $('#enter-now-button').click(function() {
 $('#createdRooms').on('click', '.listedRoom', function() {
   localStorage.setItem('room', $(this).text());
   $(this).toggleClass('roomSelected');
-  $(this).removeClass('listedRoom-hover');
+  // $(this).removeClass('listedRoom-hover');
   $('#chooseRoom-button').prop('disabled', false);
   $('#createdRoomsContainer').fadeOut(150);
   $('#roomSelected')
@@ -222,7 +222,7 @@ $('#backToListing').click(function() {
     .fadeIn(150);
   if ($('ul li').hasClass('roomSelected')) {
     $('ul li').removeClass('roomSelected');
-    $('ul li').addClass('listedRoom-hover');
+    // $('ul li').addClass('listedRoom-hover');
   }
   $('#back-arrow').removeClass('invisible');
 });
