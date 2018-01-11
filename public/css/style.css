@@ -480,15 +480,17 @@ p {
   list-style-type: none;
   margin: auto;
   margin-top: 20px;
+  text-align: center;
 }
 
 .listedRoom {
   color: rgb(220, 232, 255);
   width: 300px;
-  max-width: 45%;
+  max-width: 90%;
   font-size: 18px;
   font-family: Bookman, serif;
   padding: 5px 0;
+  margin: auto;
   border: 1px solid rgba(120, 142, 197, 0);
 }
 
@@ -550,7 +552,7 @@ tr {
 #user-icon {
   height: 30px;
 }
-.multi-column {
+/*.multi-column {
   -moz-column-count: 2;
   -moz-column-gap: 10px;
   -moz-column-fill: auto;
@@ -561,7 +563,7 @@ tr {
   column-gap: 10px;
   column-fill: auto;
   list-style-position: inside;
-}
+}*/
 
 .flag {
   position: absolute;
