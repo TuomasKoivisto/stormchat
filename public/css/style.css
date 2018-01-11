@@ -484,6 +484,7 @@ p {
 
 .listedRoom {
   color: rgb(220, 232, 255);
+  min-height: 30px;
   width: 300px;
   max-width: 90%;
   font-size: 18px;
@@ -559,7 +560,7 @@ tr {
   -webkit-column-fill: auto;
   column-count: 2;
   column-gap: 10px;
-  /*column-fill: auto;*/
+  column-fill: auto;
   list-style-position: inside;
 }
 
