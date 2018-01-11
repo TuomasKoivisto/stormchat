@@ -479,7 +479,7 @@ p {
 #createdRooms {
   list-style-type: none;
   margin: auto;
-  margin-top: 0px;
+  margin-top: 20px;
 }
 
 .listedRoom {
@@ -488,7 +488,6 @@ p {
   max-width: 90%;
   font-size: 18px;
   font-family: Bookman, serif;
-  margin: 15px 0;
   border: 1px solid rgba(120, 142, 197, 0);
 }
 
