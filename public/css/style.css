@@ -480,11 +480,11 @@ p {
   list-style-type: none;
   margin: auto;
   margin-top: 20px;
+  height: 90%:
 }
 
 .listedRoom {
   color: rgb(220, 232, 255);
-  min-height: 30px;
   width: 300px;
   max-width: 90%;
   font-size: 18px;
