@@ -386,6 +386,7 @@ $('#choosename-button').click(function() {
 });
 
 socket.on('nameNotTaken', () => {
+  clearInputBackground();
   socket.emit('refreshUsers', localStorage.getItem('room'));
   socket.emit('newUser', {
     user: localStorage.getItem('name'),
@@ -432,6 +433,7 @@ $('#logout').on('click', function() {
 })
 
 $('#logout-confirm').click(function() {
+  $('#messagelist').html('');
   $('#logout-modal').modal('hide');
   $('#modal').modal('show');
   $('#menuBtn').removeClass('pressed');
